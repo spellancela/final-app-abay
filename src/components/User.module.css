@@ -1,0 +1,10 @@
+body {
+    margin: 0px;
+}
+
+.title{
+    text-align: center;
+    font-size: 3rem;
+    margin: 10px;
+    padding: 10px;
+}
