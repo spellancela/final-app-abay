@@ -8,6 +8,8 @@ import Swal from 'sweetalert2'
 import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, child, get,remove,update } from "firebase/database";
 
+import './UserForm.css';
+
 const firebaseConfig = {
    apiKey: "AIzaSyANaqExyrg2RRodGLlPvfcIKRpJqOKj5GI",
    authDomain: "react-app-c2906.firebaseapp.com",
@@ -44,13 +46,16 @@ const UserForm  = (props) =>{
     }, []);
 
     const setUser = (data) => {
-        firstnameRef.current.value = data.todo.fname
-        lastnameRef.current.value = data.todo.lname
-        emailRef.current.value = data.todo.email
-        idRef.current.value = data.todo.id
-        bdayRef.current.value = data.todo.bday
+        firstnameRef.current.value = data.todo.fname;
+        lastnameRef.current.value = data.todo.lname;
+        emailRef.current.value = data.todo.email;
+        idRef.current.value = data.todo.id;
+        bdayRef.current.value = data.todo.bday;
         setUpdate(true)
         setID(data.id)
+
+        console.log('under setUser');
+        console.log(data);
     }
 
     const onSubmitHandler = e =>{
@@ -121,7 +126,7 @@ const UserForm  = (props) =>{
 
     return ( 
         <div>
-         <form className="ui form" onSubmit={onSubmitHandler}>
+         <form className="ui form" onSubmit={onSubmitHandler} >
            
            <div className="two fields">
                <div className='field'> 
@@ -143,7 +148,7 @@ const UserForm  = (props) =>{
 
             <div className="three fields">
                <div className='field'> 
-                    <label htmlFor='fname'>Enter your enterprise id</label>
+                    <label htmlFor='id'>Enter your enterprise id</label>
                     <input type='text' placeholder="Enter your id" 
                     id='id' name='id'  ref={idRef}
                     />
@@ -170,8 +175,8 @@ const UserForm  = (props) =>{
 
            
             <div className='field float-right'>
-             <button  disabled={formIsValid} className='ui animated primary button visible content' tabIndex="105" type='submit'>
-                <div className="visible content" type="submit" >{status}</div>
+             <button   disabled={formIsValid} className='ui animated primary button visible content' tabIndex="105" type='submit'>
+                <div className="visible content" type="submit"  >{status}</div>
                 <div className="hidden content">
                     Confirming ..
                 </div>
