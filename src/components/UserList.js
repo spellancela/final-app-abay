@@ -17,22 +17,19 @@ const firebaseConfig = {
 
  // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
-
-
 const UserList = () => {
   const [users, setUser] = useState();
   const [userID,setUserID] = useState();
 
   useEffect(() => {
       eventBus.on("added", (data) =>
-            getPosts()
+            getUserPosts()
       )
-      getPosts();
+      getUserPosts();
   }, []);
 
 
-  function getPosts(){
+  function getUserPosts(){
 
     console.log('Getting . . .')
    const dbRef = ref(getDatabase());
@@ -63,7 +60,7 @@ const UserList = () => {
    
  }
 
- function deletePost(id){
+ function deleteUserPost(id){
    const dbRef = ref(getDatabase());
 
    let arr = users;
@@ -79,7 +76,7 @@ const UserList = () => {
       /* Read more about isConfirmed, isDenied below */
       if (result.isConfirmed) {
             remove(child(dbRef, `posts/${id}`)).then((snapshot) => {
-              getPosts();
+              getUserPosts();
             })
         Swal.fire('Saved!', '', 'success')
       } else if (result.isDenied) {
@@ -89,7 +86,7 @@ const UserList = () => {
 
 }
  
-  
+
   return (
     <div>
       <h1 className="mt-5 text-center"> User List </h1>
@@ -120,7 +117,7 @@ const UserList = () => {
                         Update
                         </button>
 
-                        <button className="btn btn-danger" onClick={e => deletePost(userID[index])}>Delete</button>
+                        <button className="btn btn-danger" onClick={e => deleteUserPost(userID[index])}>Delete</button>
                         </td>
 
                    </tr>

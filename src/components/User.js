@@ -20,21 +20,12 @@ const onAdd =(user)=>{
      })
 }
 
-
-
-
  return (
-
     <div>
       
        <header className={classes.title}> Add New User </header>
-        <div>     <UserForm addUser={onAdd} />  </div>
-    
-       
+        <div>     <UserForm addUser={onAdd} />  </div>      
     </div>
-
-
  )
 }
-
 export default User;
