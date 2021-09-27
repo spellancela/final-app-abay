@@ -46,16 +46,14 @@ const UserForm  = (props) =>{
     }, []);
 
     const setUser = (data) => {
-        firstnameRef.current.value = data.todo.fname;
-        lastnameRef.current.value = data.todo.lname;
-        emailRef.current.value = data.todo.email;
-        idRef.current.value = data.todo.id;
-        bdayRef.current.value = data.todo.bday;
+        firstnameRef.current.value = data.user.fname;
+        lastnameRef.current.value = data.user.lname;
+        emailRef.current.value = data.user.email;
+        idRef.current.value = data.user.id;
+        bdayRef.current.value = data.user.bday;
         setUpdate(true)
         setID(data.id)
 
-        console.log('under setUser');
-        console.log(data);
     }
 
     const onSubmitHandler = e =>{

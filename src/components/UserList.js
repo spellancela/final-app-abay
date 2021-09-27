@@ -55,9 +55,6 @@ const UserList = () => {
 
  function update(id){
    let index = userID.findIndex(t => t === id)
- 
-   console.log('update');
-
    eventBus.dispatch("update", { user: users[index],id : id });
    
  }
@@ -87,7 +84,6 @@ const UserList = () => {
     })
 
 }
-
   return (
     <div>
       <h1 className="mt-5 text-center"> User List </h1>
